@@ -2,23 +2,18 @@ package org.example.daniel.task1;
 
 import java.util.Scanner;
 
-class CliHandler {
-    void run() {
-        runCli();
+public class CliHandler {
+    private final Scanner sc = new Scanner(System.in);
+
+    private void showMenu() {
+        System.out.println("1 - Сказать hello world");
+        System.out.println("0 - Выход");
     }
 
-    void showMenu() {
-        System.out.println("1 - Сказать hello world\n0 - Выход");
-    }
-
-    String input() {
-        return new Scanner(System.in).nextLine();
-    }
-
-    void runCli() {
+    public void runCli() {
         while (true) {
             showMenu();
-            switch (input()) {
+            switch (this.sc.nextLine()) {
                 case "1":
                     System.out.println("hello world");
                     break;
