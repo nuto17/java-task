@@ -11,6 +11,7 @@ public class CliHandler {
     }
 
     public void runCli() {
+        label:
         while (true) {
             showMenu();
             switch (this.sc.nextLine()) {
@@ -18,7 +19,7 @@ public class CliHandler {
                     System.out.println("hello world");
                     break;
                 case "0":
-                    System.exit(0);
+                    break label;
                 default:
                     System.out.println("введено некоректное значение");
             }
