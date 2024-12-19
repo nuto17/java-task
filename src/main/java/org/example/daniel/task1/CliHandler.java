@@ -10,7 +10,7 @@ public class CliHandler {
         System.out.println("0 - Выход");
     }
 
-    public void runCli() {
+    public void run() {
         label:
         while (true) {
             showMenu();
