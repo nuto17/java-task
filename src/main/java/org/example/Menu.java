@@ -7,24 +7,33 @@ public class Menu {
 
     public static void showOptions() {
         System.out.println("1 - Добавить студента");
-        System.out.println("2 - Получить оценку студента");
+        System.out.println("2 - Получить возраст студента");
         System.out.println("3 - Удалить студента");
         System.out.println("4 - Проверить существование студента");
         System.out.println("5 - Список всех студентов");
-        System.out.println("6 - Выйти");
+        System.out.println("6 - Найти id по имени");
+        System.out.println("7 - Выйти");
+    }
+
+    private static int inputId() {
+        System.out.println("введите id: ");
+        int id = scanner.nextInt();
+        scanner.nextLine();
+        return id;
     }
 
     private static String inputName() {
         System.out.println("введите имя: ");
         String nameStud = scanner.nextLine();
+        ;
         return nameStud;
     }
 
-    private static int inputEsimate() {
-        System.out.println("введите оценку: ");
-        int esimate = scanner.nextInt();
+    private static int inputAge() {
+        System.out.println("введите возраст: ");
+        int age = scanner.nextInt();
         scanner.nextLine();
-        return esimate;
+        return age;
     }
 
     public static void showMenu() {
@@ -32,24 +41,27 @@ public class Menu {
         {
             while (true) {
                 showOptions();
-                String choice = scanner.nextLine();
+                Integer choice = scanner.nextInt();
                 switch (choice) {
-                    case "1":
-                        StudentManager.addStudent(inputName(), inputEsimate());
+                    case 1:
+                        StudentManager.addStudent(inputId(), inputName(), inputAge());
                         break;
-                    case "2":
-                        StudentManager.getEsimate(inputName());
+                    case 2:
+                        StudentManager.getAge(inputId());
                         break;
-                    case "3":
-                        StudentManager.removeStudent(inputName());
+                    case 3:
+                        StudentManager.removeStudent(inputId());
                         break;
-                    case "4":
-                        StudentManager.getStudent(inputName());
+                    case 4:
+                        StudentManager.getStudent(inputId());
                         break;
-                    case "5":
+                    case 5:
                         StudentManager.printStudents();
                         break;
-                    case "6":
+                    case 6:
+                        StudentManager.getId(inputName());
+                        break;
+                    case 7:
                         break label;
                 }
             }
