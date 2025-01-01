@@ -9,10 +9,7 @@ public class StudentManager {
         if (students.containsKey(id)) {
             System.out.println("студент уже существует");
         } else {
-            Student student = new Student();
-            student.setId(id);
-            student.setName(name);
-            student.setAge(age);
+            Student student = new Student(id, name, age);
             students.put(id, student);
             System.out.printf("студент %s добавлен в список\n", name);
         }

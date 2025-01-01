@@ -25,7 +25,6 @@ public class Menu {
     private static String inputName() {
         System.out.println("введите имя: ");
         String nameStud = scanner.nextLine();
-        ;
         return nameStud;
     }
 
