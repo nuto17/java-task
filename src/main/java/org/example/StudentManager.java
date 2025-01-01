@@ -9,7 +9,11 @@ public class StudentManager {
         if (students.containsKey(id)) {
             System.out.println("студент уже существует");
         } else {
-            students.put(id, new Student(id, name, age));
+            Student student = new Student();
+            student.setId(id);
+            student.setName(name);
+            student.setAge(age);
+            students.put(id, student);
             System.out.printf("студент %s добавлен в список\n", name);
         }
     }
@@ -23,16 +27,16 @@ public class StudentManager {
     }
 
     public static void getId(String name) {
-        int found = 0;
+        boolean found = false;
         for (Student student : students.values()) {
             if (student.getName().equals(name)) {
                 System.out.println(student.getId());
-                found = 1;
+                found = true;
                 break;
             }
-            if (found == 0) {
-                System.out.println("нет такого студента");
-            }
+        }
+        if (!found) {
+            System.out.println("студента не существует");
         }
     }
 
