@@ -4,37 +4,26 @@ import lombok.Data;
 
 import java.util.Scanner;
 
-interface EngineControl {
-    void start();
-
-    void stop();
-}
-
-interface WheelCheck {
-    void checkStatus(int wheelIndex);
-}
-
 @Data
 public class Car {
     private String engineType;
     private boolean[] wheels;
 
-    public Car(String engineType) {
+    public Car(String engineType, boolean[] wheels) {
         this.engineType = engineType;
-        this.wheels = new boolean[4];
+        this.wheels = wheels;
     }
 
     public void drive() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("введите статус колес");
-        
+        boolean wheelStatus = true;
         for (int i = 0; i < wheels.length; i++) {
-            wheel.checkStatus(i);
+            if (!wheels[i]) {
+                System.out.println("колесо" + (i + 1) + "неисправно");
+                wheelStatus = false;
+            }
         }
-        if (canCarRide()) {
-            System.out.println("Машина готова к движению");
-        } else {
-            System.out.println("Машина не может поехать, проверьте колеса");
+        if (wheelStatus) {
+            System.out.println("все колеса исправны");
         }
     }
 
@@ -50,18 +39,10 @@ public class Car {
 
 
     abstract class Engine implements EngineControl {
-        public void start() {
-        }
-
-        ;
-
-        public void stop() {
-        }
-
-        ;
     }
 
-    class PetrolEngine implements EngineControl {
+
+    class PetrolEngine extends Engine implements EngineControl {
         @Override
         public void start() {
             System.out.println("Бензиновый двигатель запущен");
@@ -73,21 +54,17 @@ public class Car {
         }
     }
 
-    @Data
-    class Wheel implements WheelCheck {
-        private boolean status;
-
-        public Wheel(Boolean status) {
-            this.status = status;
+    class ElectricEngine extends Engine implements EngineControl {
+        @Override
+        public void start() {
+            System.out.println("электрический двигатель запушен");
         }
 
         @Override
-        public void checkStatus(int wheelIndex) {
-            if (status) {
-                wheels[wheelIndex] = true;
-            } else {
-                wheels[wheelIndex] = false;
-            }
+        public void stop() {
+            System.out.println("электрический двигатель заглушен");
         }
     }
 }
+
+
