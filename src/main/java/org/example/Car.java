@@ -1,21 +1,26 @@
 package org.example;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Scanner;
 
 @Data
+@NoArgsConstructor
 public class Car {
-    private String engineType;
     private boolean[] wheels;
+    private Engine engine;
 
-    public Car(String engineType, boolean[] wheels) {
-        this.engineType = engineType;
+    public Car(boolean[] wheels, Engine engine) {
         this.wheels = wheels;
+        this.engine = engine;
     }
 
     public void drive() {
         boolean wheelStatus = true;
+        System.out.println("проверяем двигатель");
+        engine.start();
         for (int i = 0; i < wheels.length; i++) {
             if (!wheels[i]) {
                 System.out.println("колесо" + (i + 1) + "неисправно");
@@ -24,25 +29,15 @@ public class Car {
         }
         if (wheelStatus) {
             System.out.println("все колеса исправны");
-        }
-    }
-
-    public boolean canCarRide() {
-        for (boolean wheel : wheels) {
-            if (!wheel) {
-                return false;
-
-            }
-        }
-        return true;
+        }   engine.stop();//проверка завершена
     }
 
 
-    abstract class Engine implements EngineControl {
+   public abstract static class Engine implements EngineControl {
     }
 
 
-    class PetrolEngine extends Engine implements EngineControl {
+    public static class PetrolEngine extends Engine implements EngineControl {
         @Override
         public void start() {
             System.out.println("Бензиновый двигатель запущен");
@@ -54,7 +49,7 @@ public class Car {
         }
     }
 
-    class ElectricEngine extends Engine implements EngineControl {
+    public static class ElectricEngine extends Engine implements EngineControl {
         @Override
         public void start() {
             System.out.println("электрический двигатель запушен");
