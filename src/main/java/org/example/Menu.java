@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class Menu {
     private static final Scanner scanner = new Scanner(System.in);
+
     public static void showEngineType() {
         System.out.println("выберете тип двигателя машины: ");
         System.out.println("1 - бензиновый");
@@ -20,34 +21,35 @@ public class Menu {
     }
 
     public static void showMenu() {
-        boolean [] wheels = setWheels();
+        boolean[] wheels = setWheels();
         Car car = new Car(wheels, null);
-        label:
-        {
-            while (true) {
-                showEngineType();
-                int choice = scanner.nextInt();
-                switch (choice) {
-                    case 1:
-                        System.out.println("вы выбрали бензиновый двигатель");
-                        car.setEngine(new Car.PetrolEngine());
-                        car.getEngine().start();
-                        car.drive();
-                        break;
+        boolean running = true;
+        while (running) {
+            showEngineType();
+            int choice = scanner.nextInt();
+            switch (choice) {
+                case 1:
+                    System.out.println("вы выбрали бензиновый двигатель");
+                    car.setEngine(new Car.PetrolEngine());
+                    car.getEngine().start();
+                    car.drive();
+                    running = false;
+                    break;
 
-                    case 2:
-                        System.out.println("вы выбрали электрический двигатель");
-                        car.setEngine(new Car.ElectricEngine());
-                        car.getEngine().start();
-                        car.drive();
-                        break;
-                    case 3:
-                        break label;
-
-                }
+                case 2:
+                    System.out.println("вы выбрали электрический двигатель");
+                    car.setEngine(new Car.ElectricEngine());
+                    car.getEngine().start();
+                    car.drive();
+                    running = false;
+                    break;
+                case 3:
+                    running = false;
+                    break;
 
             }
+
         }
     }
-
 }
+

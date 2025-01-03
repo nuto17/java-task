@@ -4,6 +4,8 @@ package org.example;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        Menu.showMenu();
+
+        Car car = new Car(new boolean[]{true, true, true, true},new Car.PetrolEngine());
+        car.drive();
     }
 }

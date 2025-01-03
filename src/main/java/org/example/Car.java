@@ -38,7 +38,6 @@ public class Car {
 
 
     public static class PetrolEngine extends Engine implements EngineControl {
-        @Override
         public void start() {
             System.out.println("Бензиновый двигатель запущен");
         }
