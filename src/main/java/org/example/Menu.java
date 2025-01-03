@@ -18,15 +18,10 @@ public class Menu {
         }
         return wheels;
     }
-    private static boolean[] unlockWheels() {
-        boolean[] wheels = setWheels();
-        boolean[] unlockedWheels = new boolean[wheels.length];
-        System.arraycopy(wheels, 0, unlockedWheels, 0, unlockedWheels.length);
-        return unlockedWheels;
-    }
 
     public static void showMenu() {
-        Car car = new Car(setWheels(), null);
+        boolean [] wheels = setWheels();
+        Car car = new Car(wheels, null);
         label:
         {
             while (true) {
