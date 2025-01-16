@@ -4,25 +4,24 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class TextFormatter {
+    Camelcase camelcase = new Camelcase();
     private static final Scanner scanner = new Scanner(System.in);
     public void chooseType() {
         System.out.println("Введите текст: ");
         String text = scanner.nextLine();
         System.out.println("выбор формата: " + Arrays.toString(Type.values()));
-        String choice = scanner.nextLine();
+        int choice = scanner.nextInt();
         switch (choice) {
-            case "uppercase":
+            case 1:
                 System.out.println(text.toUpperCase());
                 break;
-            case "lowercase":
+            case 2:
                 System.out.println(text.toLowerCase());
                 break;
-            case "camelcase":
-                System.out.println(text.toUpperCase());
+            case 3:
+                System.out.println(camelcase.toCamelCase(text));
                 break;
-            case "reverse":
-                System.out.println(text.toUpperCase());
-                break;
+
         }
 
     }
