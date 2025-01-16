@@ -5,18 +5,10 @@ import java.util.Scanner;
 
 public class TextFormatter {
     private static final Scanner scanner = new Scanner(System.in);
-
-    public enum type {
-        uppercase,
-        lowercase,
-        camelcase,
-        reverse
-    }
-
     public void chooseType() {
         System.out.println("Введите текст: ");
         String text = scanner.nextLine();
-        System.out.println("выбор формата: " + Arrays.toString(type.values()));
+        System.out.println("выбор формата: " + Arrays.toString(Type.values()));
         String choice = scanner.nextLine();
         switch (choice) {
             case "uppercase":
