@@ -4,26 +4,25 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-public class Service {
+public class UserService {
     Map<Integer, User> map = new HashMap<>();
 
     {
+
         map.put(1, new User(18, "даня"));
         map.put(2, new User(18, "егор"));
         map.put(3, new User(24, "алекс"));
-        map.put(null, new User(19, "базай"));
-        map.put(4, null);
+        map.put(4, new User(19, "базай"));
 
 
     }
 
-    public void findById(int id) {
+    public User findById(int id) {
         Optional<User> optionalUser = Optional.ofNullable(map.get(id));
-        if (optionalUser.isPresent()) {
-            map.get(id).showUser();
-        } else {
+        if (optionalUser.isEmpty()) {
             System.out.println("не существует");
         }
+        return map.get(id);
     }
 
 }

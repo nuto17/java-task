@@ -9,7 +9,11 @@ public class User {
         this.name = name;
     }
 
-    public void showUser() {
-        System.out.printf("имя: %s \nвозраст: %d%n", name, age);
+    @Override
+    public String toString() {
+        return "User{" +
+                "age=" + age +
+                ", name='" + name + '\'' +
+                '}';
     }
 }
