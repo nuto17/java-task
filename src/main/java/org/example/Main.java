@@ -25,7 +25,7 @@ public class Main {
 
         List<Employee> employerInJava = employers.stream().filter(x -> x.getWork().equals("java")).filter(x -> x.getAge() < 30).toList();
         for (Employee x : employerInJava) {
-            System.out.println(x.getName() + " " + "меньше 30 лет");
+            System.out.println(String.format("%s меньше 30 лет",x.getName()));
         }
     }
 }
