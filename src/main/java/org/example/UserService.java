@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-public class Service {
+public class UserService {
     Map<Integer, User> map = new HashMap<>();
 
     {
