@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Employee {
-    static List<Employee> employers = new ArrayList<>();
     private final String name;
     private final int age;
     private final double salary;
@@ -15,15 +14,6 @@ public class Employee {
         this.age = age;
         this.salary = salary;
         this.work = work;
-        employers.add(this);
-    }
-
-    public List<Employee> getEmployers() {
-        return employers;
-    }
-
-    public Object[] toArray() {
-        return new Object[]{name, age, salary, work};
     }
 
     public int getAge() {
@@ -42,8 +32,4 @@ public class Employee {
         return work;
 
     }
-//    @Override
-//    public String toString() {
-//        return "Employee{name='" + name + "', age=" + age + ", salary=" + salary + ", work='" + work + "'}";
-//    }
 }
