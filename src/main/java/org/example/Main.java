@@ -6,13 +6,13 @@ import java.util.stream.Stream;
 
 public class Main {
     public static void main(String[] args) {
-        Employee egor = new Employee("egor", 18, 3265000, "java");
-        Employee artem = new Employee("artem", 19, 1_000_000, "chill_out");
-        Employee arseniy = new Employee("arseniy", 18, 100, "java");
-        Employee vahra = new Employee("vahra", 22, 66_000, "chill_out");
-        Employee bazay = new Employee("bazay", 19, 67_000, "java");
-        Employee sarvar = new Employee("sarvar", 56, 1_000_000, "chill_out");
-        List<Employee> employers = List.of(egor, artem, arseniy, vahra, bazay, sarvar);
+        List<Employee> employers = List.of(
+                new Employee("egor", 18, 3265000, "java"),
+                new Employee("artem", 19, 1_000_000, "chill_out"),
+                new Employee("arseniy", 18, 100, "java"),
+                new Employee("vahra", 22, 66_000, "chill_out"),
+                new Employee("bazay", 19, 67_000, "java"),
+                new Employee("sarvar", 56, 1_000_000, "chill_out"));
 
         Stream<Employee> employersStream = employers.stream();
         employersStream.filter(x -> x.getSalary() > 65_000).map(Employee::getName).forEach(System.out::println);//вывод людей с зп> 65_000
@@ -25,7 +25,7 @@ public class Main {
 
         List<Employee> employerInJava = employers.stream().filter(x -> x.getWork().equals("java")).filter(x -> x.getAge() < 30).toList();
         for (Employee x : employerInJava) {
-            System.out.println(String.format("%s меньше 30 лет",x.getName()));
+            System.out.println(String.format("%s меньше 30 лет", x.getName()));
         }
     }
 }
